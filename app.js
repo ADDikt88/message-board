@@ -7,19 +7,13 @@ const path = require("node:path");
 
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
+//set up middleware parser
+app.use(express.urlencoded({ extended: true }));
 
 //set up routers
-//const newmsgRouter = require("./routes/newmsgRouter");
 const indexRouter = require("./routes/indexRouter");
 
-//app.use("/newMessage", newmsgRouter);
 app.use("/", indexRouter);
-
-//links variables
-const links = [
-  { href: "/", text: "Home" },
-  { href: "new", text: "New Message" },
-];
 
 //set up views
 //set views

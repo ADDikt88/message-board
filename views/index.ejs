@@ -10,11 +10,21 @@
   <body>
     <h1><%= title %></h1>
     <ul>
+      <% for (let i = 0; i < links.length; i++) { %>
+      <h2>
+        <a href="<%= links[i].href %>">
+          <span> <%= links[i].text %> </span>
+        </a>
+      </h2>
+      <% } %>
+    </ul>
+    <ul>
       <% messages.forEach((message) => { %>
       <li>
         <p>Author: <%= message.user %></p>
         <p>Date: <%= message.added %></p>
         <p>Message: <%= message.text %></p>
+        <a href="/edit/<%= message.id %>">Edit </a>
       </li>
       <% }); %>
     </ul>
