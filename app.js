@@ -1,24 +1,21 @@
+// Load environment variables
+require("dotenv").config();
+// config dotenv file
+
 const express = require("express");
 const app = express();
+const messagesRouter = require("./routes/messagesRouter");
 
-const fs = require("fs");
-const url = require("url");
+// const fs = require("fs");
+// const url = require("url");
 const path = require("node:path");
-
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
+
 //set up middleware parser
-app.use(express.urlencoded({ extended: true }));
-
-//set up routers
-const indexRouter = require("./routes/indexRouter");
-
-app.use("/", indexRouter);
-
-//set up views
-//set views
-app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use("/", messagesRouter);
 
 //listen
 const PORT = process.env.PORT || 3000;
