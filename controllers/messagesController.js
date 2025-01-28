@@ -36,8 +36,8 @@ async function messagesCreatePost(req, res) {
 }
 
 async function messagesDeletePost(req, res) {
-  console.log("deleting message id: ", req.body.id);
-  await db.deleteMessage();
+  console.log("deleting message id: ", req.params.id);
+  await db.deleteMessage(req.params.id);
   res.redirect("/");
 }
 

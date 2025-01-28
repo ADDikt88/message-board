@@ -7,8 +7,8 @@ messagesRouter.get("/", messagesController.messagesListGet);
 messagesRouter.get("/new", messagesController.messagesCreateGet);
 messagesRouter.post("/new", messagesController.messagesCreatePost);
 
-messagesRouter.get("/edit/:id", messagesController.messagesUpdateGet);
-messagesRouter.post("/edit/:id", messagesController.messagesUpdatePost);
+//messagesRouter.get("/edit/:id", messagesController.messagesUpdateGet);
+//messagesRouter.post("/edit/:id", messagesController.messagesUpdatePost);
 
 messagesRouter.post("/delete/:id", messagesController.messagesDeletePost);
 
