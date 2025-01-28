@@ -41,9 +41,28 @@ async function messagesDeletePost(req, res) {
   res.redirect("/");
 }
 
+async function messagesUpdateGet(req, res) {
+  console.log("editing message id: ", req.params.id);
+  const msgEdit = await db.getMessage(req.params.id);
+  console.log("retrieved message: ", msgEdit);
+  res.render("edit", {
+    title: "Edit message",
+    message: msgEdit[0],
+  });
+}
+
+async function messagesUpdatePost(req, res) {
+  const { userName, messageText } = req.body;
+  const userID = req.params.id;
+  await db.updateMessage(userID, userName, messageText);
+  res.redirect("/");
+}
+
 module.exports = {
   messagesListGet,
   messagesCreateGet,
   messagesCreatePost,
   messagesDeletePost,
+  messagesUpdateGet,
+  messagesUpdatePost,
 };
